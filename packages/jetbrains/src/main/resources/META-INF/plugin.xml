@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>net.dabzse.omnigit.intellij</id>
+    <name>OmniGit</name>
+    <version>0.0.1</version>
+    <vendor url="https://github.com/dabzse/omnigit">Mihaly Nyilas</vendor>
+
+    <description><![CDATA[
+        <h2>🌳 OmniGit — Universal Git Graph</h2>
+        <p>Interactive Git graph visualization with GitLens-style productivity features for JetBrains IDEs.</p>
+        <ul>
+            <li>Interactive SVG Git graph with lanes, merges, and tags</li>
+            <li>Inline blame annotations & gutter commit heatmap</li>
+            <li>File history timeline & side-by-side diff viewer</li>
+            <li>Branch & tag CRUD management</li>
+            <li>Stash manager & contributors analytics</li>
+        </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.vcs</depends>
+    <depends>Git4Idea</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="OmniGit"
+                    anchor="bottom"
+                    icon="AllIcons.Vcs.Branch"
+                    factoryClass="net.dabzse.omnigit.GitGraphToolWindowFactory"/>
+    </extensions>
+
+    <actions>
+        <action id="net.dabzse.omnigit.showGraph"
+                class="net.dabzse.omnigit.GitGraphAction"
+                text="Show Git Graph"
+                description="Open OmniGit interactive graph window"
+                icon="AllIcons.Vcs.Branch">
+            <add-to-group group-id="VcsGroups" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="control alt G"/>
+        </action>
+    </actions>
+</idea-plugin>

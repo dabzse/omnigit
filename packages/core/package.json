@@ -1,0 +1,31 @@
+{
+  "name": "@dabzse/omnigit-core",
+  "version": "0.0.1",
+  "description": "Shared Git engine — CLI executor, log parser, blame, diff, staging, graph layout",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./graph": {
+      "types": "./dist/graph/layout.d.ts",
+      "import": "./dist/graph/layout.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}

@@ -1,0 +1,63 @@
+<UserControl x:Class="OmniGit.VisualStudio.ToolWindows.GitGraphToolWindowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="800"
+             Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+    <Grid>
+        <!-- Microsoft WebView2 Control -->
+        <wv2:WebView2 x:Name="webView"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Visibility="Visible" />
+
+        <!-- Fallback / Loading Overlay -->
+        <Border x:Name="statusOverlay"
+                Background="#1E1E2E"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="500">
+                <TextBlock x:Name="statusTitle"
+                           Text="OmniGit — Initializing Git Graph"
+                           Foreground="#CDD6F4"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,12" />
+
+                <TextBlock x:Name="statusDescription"
+                           Text="Connecting to Microsoft WebView2 runtime and scanning repository..."
+                           Foreground="#A6ADC8"
+                           FontSize="13"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20" />
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="retryButton"
+                            Content="Retry Connection"
+                            Padding="12,6"
+                            Margin="6,0"
+                            Background="#89B4FA"
+                            Foreground="#11111B"
+                            FontWeight="Medium"
+                            Click="OnRetryClicked" />
+
+                    <Button x:Name="openRepoButton"
+                            Content="Open Repository Folder"
+                            Padding="12,6"
+                            Margin="6,0"
+                            Background="#313244"
+                            Foreground="#CDD6F4"
+                            FontWeight="Medium"
+                            Click="OnOpenRepoClicked" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

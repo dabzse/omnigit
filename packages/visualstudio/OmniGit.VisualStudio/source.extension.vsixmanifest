@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="OmniGit.VisualStudio.8d27e289-4b6e-4e42-990a-cb5f87b8d4e1" Version="1.0.0" Language="en-US" Publisher="Mihaly Nyilas" />
+    <DisplayName>OmniGit — Git Graph &amp; Lens</DisplayName>
+    <Description xml:space="preserve">Universal Git Graph visualization, commit history inspection, partial staging, visual interactive rebase, and inline editor blame annotations for Visual Studio (Community, Professional, Enterprise 2017, 2019, 2022+).</Description>
+    <MoreInfo>https://github.com/dabzse/omnigit</MoreInfo>
+    <License>LICENSE.txt</License>
+    <Tags>git, git graph, gitlens, blame, source control, rebase, diff, staging, commits</Tags>
+    <Icon>Resources\Icon.png</Icon>
+  </Metadata>
+  <Installation>
+    <!-- Visual Studio 2017 & 2019 (x86 32-bit IDE) -->
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0, 17.0)">
+      <ProductArchitecture>x86</ProductArchitecture>
+    </InstallationTarget>
+    <!-- Visual Studio 2022 (amd64 64-bit IDE) -->
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="[4.7.2,)" />
+  </Dependencies>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0, 18.0)" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" ProjectName="OmniGit.VisualStudio" Path="|%CurrentProject%|pkgdef" />
+    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" ProjectName="OmniGit.VisualStudio" Path="|%CurrentProject%|" />
+  </Assets>
+</PackageManifest>

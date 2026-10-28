@@ -1,0 +1,301 @@
+/** ============================================================
+    OmniGit — Diff View Styles
+    ============================================================
+**/
+
+/* Diff Overlay */
+
+.diff-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  min-width: 480px;
+  max-width: 900px;
+  background: var(--og-bg);
+  border-left: 1px solid var(--og-border);
+  box-shadow: var(--og-shadow-lg);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.diff-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--og-space-md) var(--og-space-lg);
+  border-bottom: 1px solid var(--og-border);
+  background: var(--og-bg-secondary);
+  flex-shrink: 0;
+}
+
+.diff-overlay-title {
+  font-size: var(--og-font-size);
+  font-weight: 600;
+  font-family: var(--og-font-mono);
+  color: var(--og-fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.diff-overlay-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* Diff View */
+
+.diff-view {
+  font-family: var(--og-font-mono);
+  font-size: var(--og-font-size-sm);
+  line-height: 1.6;
+}
+
+.diff-file-header {
+  display: flex;
+  align-items: center;
+  gap: var(--og-space-md);
+  padding: var(--og-space-md) var(--og-space-lg);
+  background: var(--og-bg-secondary);
+  border-bottom: 1px solid var(--og-border);
+  flex-shrink: 0;
+}
+
+.diff-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--og-radius-sm);
+  font-size: var(--og-font-size-xs);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.diff-status--added { background: rgba(166, 227, 161, 0.2); color: var(--og-success); }
+.diff-status--modified { background: rgba(249, 226, 175, 0.2); color: var(--og-warning); }
+.diff-status--deleted { background: rgba(243, 139, 168, 0.2); color: var(--og-error); }
+.diff-status--renamed { background: rgba(137, 180, 250, 0.2); color: var(--og-info); }
+.diff-status--copied { background: rgba(137, 180, 250, 0.2); color: var(--og-info); }
+
+.diff-file-path {
+  color: var(--og-fg);
+  font-family: var(--og-font-mono);
+  font-size: var(--og-font-size-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.diff-mode-toggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--og-border);
+  border-radius: var(--og-radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.diff-mode-btn {
+  padding: 2px 10px;
+  font-size: var(--og-font-size-xs);
+  font-family: inherit;
+  border: none;
+  background: transparent;
+  color: var(--og-fg-muted);
+  cursor: pointer;
+  transition: background var(--og-transition-fast), color var(--og-transition-fast);
+}
+
+.diff-mode-btn:hover {
+  background: var(--og-hover);
+}
+
+.diff-mode-btn.active {
+  background: var(--og-accent);
+  color: var(--og-button-fg);
+}
+
+.diff-binary-notice,
+.diff-empty-notice {
+  padding: var(--og-space-2xl);
+  text-align: center;
+  color: var(--og-fg-subtle);
+  font-family: var(--og-font-family);
+  font-style: italic;
+}
+
+/* Hunk Header */
+
+.diff-hunk-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--og-space-xs) var(--og-space-lg);
+  background: var(--og-diff-hunk-bg);
+  color: var(--og-accent);
+  font-family: var(--og-font-mono);
+  font-size: var(--og-font-size-xs);
+  border-top: 1px solid var(--og-border-subtle);
+  border-bottom: 1px solid var(--og-border-subtle);
+  user-select: none;
+}
+
+.diff-hunk-actions {
+  display: flex;
+  gap: var(--og-space-xs);
+}
+
+.diff-hunk-btn {
+  padding: 2px 8px;
+  font-size: 11px;
+  border: 1px solid var(--og-border);
+  border-radius: var(--og-radius-sm);
+  background: var(--og-bg-secondary);
+  color: var(--og-fg-muted);
+  cursor: pointer;
+  transition: background var(--og-transition-fast), color var(--og-transition-fast), border-color var(--og-transition-fast);
+}
+
+.diff-hunk-btn:hover {
+  background: var(--og-hover);
+  color: var(--og-fg);
+  border-color: var(--og-accent);
+}
+
+.diff-file-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--og-space-xs);
+}
+
+/* Diff Table */
+
+.diff-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.diff-table--side-by-side {
+  table-layout: fixed;
+}
+
+.diff-line {
+  height: 22px;
+}
+
+.diff-line--add {
+  background: var(--og-diff-add-bg);
+}
+
+.diff-line--delete {
+  background: var(--og-diff-del-bg);
+}
+
+.diff-line-num {
+  width: 48px;
+  min-width: 48px;
+  max-width: 48px;
+  padding: 0 8px;
+  text-align: right;
+  color: var(--og-fg-subtle);
+  user-select: none;
+  font-size: var(--og-font-size-xs);
+  vertical-align: top;
+  border-right: 1px solid var(--og-border-subtle);
+}
+
+.diff-line-prefix {
+  width: 16px;
+  min-width: 16px;
+  max-width: 16px;
+  text-align: center;
+  color: var(--og-fg-subtle);
+  user-select: none;
+  vertical-align: top;
+}
+
+.diff-line--add .diff-line-prefix { color: var(--og-diff-add-fg); }
+.diff-line--delete .diff-line-prefix { color: var(--og-diff-del-fg); }
+
+.diff-line-content {
+  padding: 0 var(--og-space-md);
+  white-space: pre;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.diff-line-content.diff-wrap {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Side-by-side specifics */
+.diff-line--split td {
+  width: 50%;
+}
+
+.diff-line-content--left,
+.diff-line-content--right {
+  border-right: 1px solid var(--og-border-subtle);
+}
+
+td.diff-line--add {
+  background: var(--og-diff-add-bg);
+}
+
+td.diff-line--delete {
+  background: var(--og-diff-del-bg);
+}
+
+/* Line Stage Action */
+
+.diff-line-action {
+  width: 20px;
+  min-width: 20px;
+  max-width: 20px;
+  padding: 0;
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.diff-line-stage-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+  border: none;
+  border-radius: var(--og-radius-sm);
+  background: var(--og-accent);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .diff-line-stage-btn {
+    transition: transform 0.1s ease;
+  }
+}
+
+.diff-line:hover .diff-line-stage-btn {
+  display: inline-flex;
+}
+
+.diff-line-stage-btn:hover {
+  transform: scale(1.15);
+  background: var(--og-accent-hover);
+}
+

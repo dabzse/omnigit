@@ -1,0 +1,13 @@
+[plugin]
+id = "omnigit"
+name = "OmniGit"
+version = "0.0.1"
+display_name = "OmniGit — Git Graph & Lens"
+author = "Mihaly Nyilas"
+description = "Universal interactive Git Graph visualization and GitLens-style inline blame for Lapce"
+repository = "https://github.com/dabzse/omnigit"
+wasm = "omnigit_lapce.wasm"
+
+[commands]
+"omnigit.show_graph" = { title = "OmniGit: Show Git Graph", category = "Git" }
+"omnigit.toggle_blame" = { title = "OmniGit: Toggle Line Blame", category = "Git" }

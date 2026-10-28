@@ -1,0 +1,7 @@
+id = "omnigit"
+name = "OmniGit"
+version = "0.0.1"
+schema_version = 1
+authors = ["Mihaly Nyilas"]
+description = "Universal Git Graph visualization and productivity tool"
+repository = "https://github.com/dabzse/omnigit"

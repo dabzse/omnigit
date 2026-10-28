@@ -1,0 +1,4 @@
+[
+    { "keys": ["ctrl+alt+g"], "command": "omnigit_show_graph" },
+    { "keys": ["ctrl+alt+b"], "command": "omnigit_toggle_blame" }
+]

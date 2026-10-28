@@ -1,0 +1,167 @@
+/** ============================================================
+    OmniGit — Graph Styles
+    ============================================================
+**/
+
+.graph-viewport {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.graph-canvas {
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.graph-svg {
+  display: block;
+  position: sticky;
+  top: 0;
+}
+
+/* Graph Nodes */
+
+.graph-node {
+  cursor: pointer;
+  transition: r var(--og-transition-fast);
+}
+
+.graph-node:hover {
+  r: 6px;
+}
+
+.graph-node-ring {
+  fill: none;
+  stroke-width: 2;
+  opacity: 0;
+  transition: opacity var(--og-transition-fast);
+}
+
+.graph-node:hover + .graph-node-ring,
+.graph-node-ring.active {
+  opacity: 0.4;
+}
+
+/* Graph Edges */
+
+.graph-edge {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Commit List */
+
+.commit-list {
+  flex: 1;
+  min-width: 0;
+}
+
+.commit-row {
+  display: flex;
+  align-items: center;
+  height: var(--og-row-height);
+  padding: 0 var(--og-space-md);
+  border-bottom: 1px solid var(--og-border-subtle);
+  cursor: pointer;
+  transition: background var(--og-transition-fast);
+  gap: var(--og-space-md);
+}
+
+.commit-row:hover {
+  background: var(--og-hover);
+}
+
+.commit-row.selected {
+  background: var(--og-selection);
+}
+
+.commit-row.selected:hover {
+  background: var(--og-selection);
+}
+
+/* Commit Row Cells */
+
+.commit-hash {
+  font-family: var(--og-font-mono);
+  font-size: var(--og-font-size-sm);
+  color: var(--og-accent);
+  min-width: 64px;
+  flex-shrink: 0;
+  user-select: all;
+}
+
+.commit-message {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--og-fg);
+}
+
+.commit-refs {
+  display: flex;
+  gap: var(--og-space-xs);
+  flex-shrink: 0;
+}
+
+.commit-ref {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: var(--og-radius-sm);
+  font-size: var(--og-font-size-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.commit-ref--head {
+  background: rgba(166, 227, 161, 0.2);
+  color: var(--og-success);
+  border: 1px solid rgba(166, 227, 161, 0.3);
+}
+
+.commit-ref--remote {
+  background: rgba(137, 180, 250, 0.15);
+  color: var(--og-accent);
+  border: 1px solid rgba(137, 180, 250, 0.25);
+}
+
+.commit-ref--tag {
+  background: rgba(249, 226, 175, 0.15);
+  color: var(--og-warning);
+  border: 1px solid rgba(249, 226, 175, 0.25);
+}
+
+.commit-ref--current {
+  background: rgba(166, 227, 161, 0.3);
+  color: var(--og-success);
+  border: 1px solid rgba(166, 227, 161, 0.5);
+  font-weight: 700;
+}
+
+.commit-author {
+  font-size: var(--og-font-size-sm);
+  color: var(--og-fg-muted);
+  min-width: 120px;
+  max-width: 160px;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.commit-date {
+  font-size: var(--og-font-size-sm);
+  color: var(--og-fg-subtle);
+  min-width: 80px;
+  flex-shrink: 0;
+  text-align: right;
+}

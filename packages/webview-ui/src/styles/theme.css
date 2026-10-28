@@ -1,0 +1,226 @@
+/** ============================================================
+    OmniGit — Theme System
+    
+    Uses CSS custom properties mapped to the host IDE's theme.
+    VS Code provides these via vscode-webview CSS variables;
+    other hosts set them via the message bridge.
+    ============================================================
+**/
+
+:root {
+  /* Base Colors (defaults for standalone / dev mode) */
+  --og-bg: #1e1e2e;
+  --og-bg-secondary: #181825;
+  --og-bg-tertiary: #11111b;
+  --og-fg: #cdd6f4;
+  --og-fg-muted: #a6adc8;
+  --og-fg-subtle: #6c7086;
+  --og-border: #313244;
+  --og-border-subtle: #252535;
+  --og-accent: #89b4fa;
+  --og-accent-hover: #74c7ec;
+  --og-selection: rgba(137, 180, 250, 0.15);
+  --og-hover: rgba(137, 180, 250, 0.08);
+
+  /* Inputs */
+  --og-input-bg: #1e1e2e;
+  --og-input-fg: #cdd6f4;
+  --og-input-border: #45475a;
+  --og-input-focus-border: #89b4fa;
+
+  /* Buttons */
+  --og-button-bg: #89b4fa;
+  --og-button-fg: #1e1e2e;
+  --og-button-hover: #74c7ec;
+  --og-button-secondary-bg: #313244;
+  --og-button-secondary-fg: #cdd6f4;
+
+  /* Semantic Colors */
+  --og-success: #a6e3a1;
+  --og-warning: #f9e2af;
+  --og-error: #f38ba8;
+  --og-info: #89b4fa;
+
+  /* Diff Colors */
+  --og-diff-add-bg: rgba(166, 227, 161, 0.12);
+  --og-diff-add-fg: #a6e3a1;
+  --og-diff-del-bg: rgba(243, 139, 168, 0.12);
+  --og-diff-del-fg: #f38ba8;
+  --og-diff-hunk-bg: rgba(137, 180, 250, 0.08);
+
+  /* Graph Lane Colors */
+  --og-lane-0: #89b4fa;
+  --og-lane-1: #a6e3a1;
+  --og-lane-2: #fab387;
+  --og-lane-3: #cba6f7;
+  --og-lane-4: #94e2d5;
+  --og-lane-5: #f9e2af;
+  --og-lane-6: #f38ba8;
+  --og-lane-7: #eba0ac;
+  --og-lane-8: #74c7ec;
+  --og-lane-9: #a6e3a1;
+  --og-lane-10: #fab387;
+  --og-lane-11: #b4befe;
+  --og-lane-12: #f38ba8;
+  --og-lane-13: #94e2d5;
+  --og-lane-14: #cba6f7;
+  --og-lane-15: #f9e2af;
+
+  /* Typography */
+  --og-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --og-font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', Monaco, Menlo, Consolas, 'Courier New', monospace;
+  --og-font-size: 13px;
+  --og-font-size-sm: 11px;
+  --og-font-size-xs: 10px;
+  --og-line-height: 1.5;
+
+  /* Spacing */
+  --og-space-xs: 2px;
+  --og-space-sm: 4px;
+  --og-space-md: 8px;
+  --og-space-lg: 12px;
+  --og-space-xl: 16px;
+  --og-space-2xl: 24px;
+
+  /* Radius */
+  --og-radius-sm: 3px;
+  --og-radius-md: 6px;
+  --og-radius-lg: 8px;
+  --og-radius-round: 50%;
+
+  /* Shadows */
+  --og-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --og-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --og-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --og-transition-fast: 120ms ease;
+  --og-transition-normal: 200ms ease;
+  --og-transition-slow: 300ms ease;
+
+  /* Layout */
+  --og-toolbar-height: 40px;
+  --og-status-height: 24px;
+  --og-row-height: 26px;
+  --og-graph-lane-width: 16px;
+  --og-graph-node-radius: 4px;
+  --og-detail-width: 380px;
+}
+
+/* VS Code Theme Integration */
+/* When running inside VS Code, override our defaults with
+   the editor's theme variables. */
+body[data-vscode-theme] {
+  --og-bg: var(--vscode-editor-background, #1e1e2e);
+  --og-fg: var(--vscode-editor-foreground, #cdd6f4);
+  --og-border: var(--vscode-panel-border, #313244);
+  --og-accent: var(--vscode-focusBorder, #89b4fa);
+  --og-selection: var(--vscode-list-activeSelectionBackground, rgba(137, 180, 250, 0.15));
+  --og-input-bg: var(--vscode-input-background, #1e1e2e);
+  --og-input-fg: var(--vscode-input-foreground, #cdd6f4);
+  --og-input-border: var(--vscode-input-border, #45475a);
+  --og-button-bg: var(--vscode-button-background, #89b4fa);
+  --og-button-fg: var(--vscode-button-foreground, #1e1e2e);
+}
+
+/* Reset & Base */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--og-bg);
+  color: var(--og-fg);
+  font-family: var(--og-font-family);
+  font-size: var(--og-font-size);
+  line-height: var(--og-line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Scrollbar Styling */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--og-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--og-fg-subtle);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Utility Classes */
+
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.mono {
+  font-family: var(--og-font-mono);
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--og-radius-sm);
+  background: transparent;
+  color: var(--og-fg-muted);
+  cursor: pointer;
+  transition: background var(--og-transition-fast), color var(--og-transition-fast);
+}
+
+.icon-btn:hover {
+  background: var(--og-hover);
+  color: var(--og-fg);
+}
+
+.icon-btn:active {
+  background: var(--og-selection);
+}

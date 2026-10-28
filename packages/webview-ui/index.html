@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'nonce-__NONCE__'; script-src 'self' 'nonce-__NONCE__'; font-src data:;">
+  <title>OmniGit</title>
+  <link rel="stylesheet" href="./src/styles/theme.css">
+  <link rel="stylesheet" href="./src/styles/graph.css">
+  <link rel="stylesheet" href="./src/styles/panels.css">
+  <link rel="stylesheet" href="./src/styles/diff.css">
+  <link rel="stylesheet" href="./src/styles/components.css">
+  <link rel="stylesheet" href="./src/styles/animations.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Top Bar: Search / Filter / View Tabs -->
+    <header id="toolbar" class="toolbar">
+      <div class="toolbar-left">
+        <button id="btn-refresh" class="icon-btn" title="Refresh">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M13.451 5.609l-.579-.939-1.068.812-.076.094c.335.601.525 1.283.525 2.01 0 2.313-1.86 4.188-4.153 4.188-2.294 0-4.154-1.875-4.154-4.188S5.806 3.398 8.1 3.398c.747 0 1.448.2 2.052.546l.095-.076.814-1.063-.94-.581A5.42 5.42 0 008.1 1.773C4.915 1.773 2.347 4.36 2.347 7.586S4.915 13.398 8.1 13.398s5.753-2.586 5.753-5.812a5.842 5.842 0 00-.402-2.177z"/>
+            <path d="M13 1v4H9"/>
+          </svg>
+        </button>
+
+        <!-- View tabs -->
+        <div class="view-tabs">
+          <button id="tab-graph" class="view-tab active" title="Commit Graph">Graph</button>
+          <button id="tab-branches" class="view-tab" title="Branches & Tags">Branches</button>
+          <button id="tab-stashes" class="view-tab" title="Stashes">Stashes</button>
+          <button id="tab-contributors" class="view-tab" title="Contributors">Contributors</button>
+        </div>
+
+        <div class="search-container">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M11.742 10.344a6.5 6.5 0 10-1.397 1.398l3.85 3.85a1 1 0 001.415-1.414l-3.868-3.834zm-5.242.156a4.5 4.5 0 110-9 4.5 4.5 0 010 9z"/>
+          </svg>
+          <label for="search-input" class="sr-only">Search commits</label>
+          <input id="search-input" type="text" placeholder="Search commits by message, author, hash..." aria-label="Search commits by message, author, or hash" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+      <div class="toolbar-right">
+        <label for="branch-select" class="sr-only">Filter by branch</label>
+        <select id="branch-select" class="branch-select" title="Filter by branch" aria-label="Filter commits by branch">
+          <option value="__all__">All branches</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-content">
+
+      <!-- View: Graph (default) -->
+      <div id="view-graph" class="view-panel">
+        <div id="graph-viewport" class="graph-viewport">
+          <div id="graph-canvas" class="graph-canvas">
+            <svg id="graph-svg" class="graph-svg"></svg>
+          </div>
+          <div id="commit-list" class="commit-list"></div>
+        </div>
+      </div>
+
+      <!-- View: Branches & Tags -->
+      <div id="view-branches" class="view-panel hidden">
+        <div id="branch-manager-container"></div>
+      </div>
+
+      <!-- View: Stashes -->
+      <div id="view-stashes" class="view-panel hidden">
+        <div id="stash-panel-container"></div>
+      </div>
+
+      <!-- View: Contributors -->
+      <div id="view-contributors" class="view-panel hidden">
+        <div id="contributors-container"></div>
+      </div>
+
+      <!-- Commit Detail Panel (right side, collapsible) -->
+      <div id="detail-panel" class="detail-panel hidden">
+        <div class="detail-header">
+          <h3 id="detail-title" class="detail-title">Commit Details</h3>
+          <button id="btn-close-detail" class="icon-btn" title="Close">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 8.707l3.646 3.647.708-.707L8.707 8l3.647-3.646-.707-.708L8 7.293 4.354 3.646l-.708.708L7.293 8l-3.647 3.646.708.708L8 8.707z"/>
+            </svg>
+          </button>
+        </div>
+        <div id="detail-body" class="detail-body"></div>
+      </div>
+    </main>
+
+    <!-- Status Bar -->
+    <footer id="status-bar" class="status-bar">
+      <span id="status-branch" class="status-item"></span>
+      <span id="status-commits" class="status-item"></span>
+      <span id="status-loading" class="status-item hidden"><span class="spinner"></span> Loading...</span>
+    </footer>
+  </div>
+
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>

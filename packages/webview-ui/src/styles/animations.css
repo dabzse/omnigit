@@ -1,0 +1,146 @@
+/** ============================================================
+    OmniGit — Animations
+    ============================================================
+**/
+
+/* Loading Spinner */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--og-border);
+  border-top-color: var(--og-accent);
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spinner {
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+/* Fade In */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: fadeIn var(--og-transition-normal) ease forwards;
+  }
+}
+
+/* Slide In (Detail Panel) */
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slide-in-right {
+    animation: slideInRight var(--og-transition-slow) ease forwards;
+  }
+}
+
+/* Pulse (Node highlight on selection) */
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pulse {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}
+
+/* Row Appear */
+
+@keyframes rowAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .commit-row {
+    animation: rowAppear 0.15s ease forwards;
+  }
+
+  /* Stagger rows for a cascade effect */
+  .commit-row:nth-child(1)  { animation-delay: 0ms; }
+  .commit-row:nth-child(2)  { animation-delay: 15ms; }
+  .commit-row:nth-child(3)  { animation-delay: 30ms; }
+  .commit-row:nth-child(4)  { animation-delay: 45ms; }
+  .commit-row:nth-child(5)  { animation-delay: 60ms; }
+  .commit-row:nth-child(6)  { animation-delay: 75ms; }
+  .commit-row:nth-child(7)  { animation-delay: 90ms; }
+  .commit-row:nth-child(8)  { animation-delay: 105ms; }
+  .commit-row:nth-child(9)  { animation-delay: 120ms; }
+  .commit-row:nth-child(10) { animation-delay: 135ms; }
+
+  .graph-edge-animated {
+    stroke-dasharray: 1000;
+    animation: drawEdge 0.6s ease forwards;
+  }
+
+  .tooltip {
+    animation: tooltipFadeIn 0.15s ease forwards;
+  }
+}
+
+/* Graph Edge Draw */
+
+@keyframes drawEdge {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Tooltip */
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tooltip {
+  position: absolute;
+  background: var(--og-bg-tertiary);
+  border: 1px solid var(--og-border);
+  border-radius: var(--og-radius-md);
+  padding: var(--og-space-md) var(--og-space-lg);
+  box-shadow: var(--og-shadow-md);
+  z-index: 100;
+  pointer-events: none;
+  max-width: 320px;
+}

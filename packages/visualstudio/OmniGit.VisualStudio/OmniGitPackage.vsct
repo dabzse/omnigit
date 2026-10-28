@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidOmniGitPackage">
+    <Groups>
+      <Group guid="guidOmniGitPackageCmdSet" id="OmniGitMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_VIEW"/>
+      </Group>
+      <Group guid="guidOmniGitPackageCmdSet" id="OmniGitOtherWindowsGroup" priority="0x0100">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CSCD_WINDOWS"/>
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidOmniGitPackageCmdSet" id="cmdidGitGraphToolWindow" priority="0x0100" type="Button">
+        <Parent guid="guidOmniGitPackageCmdSet" id="OmniGitOtherWindowsGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>OmniGit Git Graph</ButtonText>
+          <ToolTipText>Open interactive OmniGit Git Graph tool window</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidOmniGitPackageCmdSet" id="cmdidToggleBlameMargin" priority="0x0200" type="Button">
+        <Parent guid="guidOmniGitPackageCmdSet" id="OmniGitMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic2" />
+        <Strings>
+          <ButtonText>Toggle OmniGit File Blame</ButtonText>
+          <ToolTipText>Toggle inline GitLens blame margin annotations</ToolTipText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\OmniGitPackage.ico" usedList="bmpPic1, bmpPic2" />
+    </Bitmaps>
+  </Commands>
+
+  <KeyBindings>
+    <KeyBinding guid="guidOmniGitPackageCmdSet" id="cmdidGitGraphToolWindow"
+                editor="guidVSStd97" key1="G" mod1="Control Alt" />
+  </KeyBindings>
+
+  <Symbols>
+    <GuidSymbol name="guidOmniGitPackage" value="{e463a55e-2b74-4b5b-80df-8c63eb1e67fa}" />
+
+    <GuidSymbol name="guidOmniGitPackageCmdSet" value="{916eb883-2fbf-4a9f-a887-3d1796d859e9}">
+      <IDSymbol name="OmniGitMenuGroup" value="0x1020" />
+      <IDSymbol name="OmniGitOtherWindowsGroup" value="0x1021" />
+      <IDSymbol name="cmdidGitGraphToolWindow" value="0x0100" />
+      <IDSymbol name="cmdidToggleBlameMargin" value="0x0101" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{7b0eb35a-464a-41f2-ba2d-426b68516b0a}">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

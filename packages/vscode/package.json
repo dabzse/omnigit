@@ -1,0 +1,122 @@
+{
+  "name": "omnigit-vscode",
+  "displayName": "OmniGit",
+  "description": "Interactive Git graph visualization + GitLens-style productivity features",
+  "version": "0.0.1",
+  "publisher": "omnigit",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "SCM Providers",
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "git",
+    "graph",
+    "blame",
+    "history",
+    "visualization",
+    "gitlens",
+    "git graph"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "omnigit.showGraph",
+        "title": "Show Git Graph",
+        "category": "OmniGit",
+        "icon": "$(git-branch)"
+      },
+      {
+        "command": "omnigit.toggleBlame",
+        "title": "Toggle Inline Blame",
+        "category": "OmniGit"
+      },
+      {
+        "command": "omnigit.showFileHistory",
+        "title": "Show File History",
+        "category": "OmniGit"
+      },
+      {
+        "command": "omnigit.refresh",
+        "title": "Refresh",
+        "category": "OmniGit",
+        "icon": "$(refresh)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "omnigit.showGraph",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g"
+      },
+      {
+        "command": "omnigit.toggleBlame",
+        "key": "ctrl+alt+b",
+        "mac": "cmd+alt+b"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "omnigit.showFileHistory",
+          "when": "resourceScheme == file",
+          "group": "navigation"
+        }
+      ],
+      "scm/title": [
+        {
+          "command": "omnigit.showGraph",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "OmniGit",
+      "properties": {
+        "omnigit.graph.maxCommits": {
+          "type": "number",
+          "default": 500,
+          "description": "Maximum number of commits to display in the graph"
+        },
+        "omnigit.blame.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable inline blame annotations"
+        },
+        "omnigit.blame.format": {
+          "type": "string",
+          "default": "${author}, ${date} • ${message}",
+          "description": "Format for inline blame annotations"
+        },
+        "omnigit.heatmap.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable commit heatmap in the gutter"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
+    "dev": "pnpm build --watch",
+    "package": "vsce package --no-dependencies",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@dabzse/omnigit-core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.0"
+  }
+}

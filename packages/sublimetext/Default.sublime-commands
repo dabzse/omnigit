@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "OmniGit: Show Git Graph",
+        "command": "omnigit_show_graph"
+    },
+    {
+        "caption": "OmniGit: Toggle Inline Blame",
+        "command": "omnigit_toggle_blame"
+    }
+]

@@ -1,0 +1,15 @@
+[
+    {
+        "id": "tools",
+        "children": [
+            {
+                "caption": "OmniGit",
+                "id": "omnigit",
+                "children": [
+                    { "caption": "Show Git Graph", "command": "omnigit_show_graph" },
+                    { "caption": "Toggle Inline Blame", "command": "omnigit_toggle_blame" }
+                ]
+            }
+        ]
+    }
+]
